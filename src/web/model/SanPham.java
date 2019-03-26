@@ -3,6 +3,7 @@ package web.model;
 public class SanPham {
 
 	private int theLoai;
+	private int danhMuc;
 	private int idSanPham;
 	private String tenSanPham;
 	private String anhSanPham;
@@ -11,20 +12,35 @@ public class SanPham {
 
 
 
+	
+
 	public SanPham() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public SanPham(int theLoai, int idSanPham, String tenSanPham, String anhSanPham, double giaSanPham,
+	public SanPham(int theLoai, int danhMuc, int idSanPham, String tenSanPham, String anhSanPham, double giaSanPham,
 			String moTaSanPham) {
 		super();
 		this.theLoai = theLoai;
+		this.danhMuc = danhMuc;
 		this.idSanPham = idSanPham;
 		this.tenSanPham = tenSanPham;
 		this.anhSanPham = anhSanPham;
 		this.giaSanPham = giaSanPham;
 		this.moTaSanPham = moTaSanPham;
+	}
+
+
+
+	public int getDanhMuc() {
+		return danhMuc;
+	}
+
+	public void setDanhMuc(int danhMuc) {
+		this.danhMuc = danhMuc;
 	}
 
 	public int getIdSanPham() {
@@ -43,7 +59,7 @@ public class SanPham {
 		this.anhSanPham = anhSanPham;
 	}
 
-	public double getTheLoai() {
+	public int getTheLoai() {
 		return theLoai;
 	}
 

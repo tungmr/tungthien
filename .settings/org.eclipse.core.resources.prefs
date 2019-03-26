@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
-encoding//src/web/dao/GetSanPham.java=UTF-8
+encoding//WebContent/info.jsp=UTF-8
+encoding//src/web/controller/CheckPasswordServlet.java=UTF-8
+encoding//src/web/controller/HandlerLogin.java=UTF-8
+encoding//src/web/dao/HoaDonDAO.java=UTF-8
+encoding//src/web/dao/SanPhamDAO.java=UTF-8
+encoding//src/web/dao/Search.java=UTF-8
+encoding//src/web/dao/UserDAO.java=UTF-8
+encoding//src/web/model/GioHang.java=UTF-8
+encoding//src/web/model/testtimkiem.java=UTF-8

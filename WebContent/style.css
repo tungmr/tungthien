@@ -70,7 +70,7 @@ html, body {
 }
 
 .searchtt input[type="text"] {
-	width: 500px;
+	width: 30em;
 	height: 35px;
 	border-radius: 8px;
 	text-align: center;
@@ -86,10 +86,7 @@ html, body {
 	margin: 0;
 }
 
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
+
 
 .center {
 	width: 100%;
@@ -318,7 +315,7 @@ img {
 	
 }
 
-img.cangiua {
+.infoshop-4 img{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -396,3 +393,220 @@ img.cangiua {
 	display: block;
 	padding-left: 0;
 }
+
+.manager{
+	display: grid;
+	grid-template-columns: 30% 70%;
+}
+
+.left-manager .right-manager{
+	width: 100%;
+	height: 100%;
+}
+
+
+.product-content{
+	display: grid;
+	grid-template-columns: 30% 70%;
+}
+
+.log-in-out{
+	display: flex;
+	padding: 8px;
+	justify-content: flex-end;
+	align-content: center;
+	font-size: 20px;
+}
+.log-in-out a{
+	color: black;
+	text-decoration: none;
+}
+
+.hello-user{
+	display: flex;
+	padding: 8px;
+	justify-content: flex-end;
+	align-content: center;
+	font-size: 20px;
+	
+}
+
+
+
+.hello-user a{
+	color: black;
+	margin-left: 15px;
+	text-decoration: none;
+}
+
+.centerdathang{
+	display: grid;
+	grid-template-columns: 100%;
+}
+
+.dathang{
+	justify-items: center;
+	
+}
+
+
+.dathang label{
+	width: 20em;
+	height: 3em;
+}
+
+.dathang input[type="text"]{
+	border-radius: 5px;
+	width: 50em;
+	height: 3em;
+	border: none;
+	border: 1px solid #FCA311;
+	
+}
+
+
+.dathang input[type="submit"]{
+	width: 9em;
+	height: 3em;
+	border-radius: 10px;
+	border: none;
+	background-color: #FCA311;
+	text-transform: uppercase;
+	color: white;
+	font-weight: bold;
+}
+
+.dathang select{
+	width: 9em;
+	height: 3em;
+	border: 1px solid #FCA311;
+	
+}
+
+.dathang input[type="submit"]:hover{
+	width: 9.5em;
+	height: 3.5em;
+	color: #FCA311;
+	background-color: #14213D;
+	transition: all 0.5s;
+}
+
+.haigrid{
+	display: grid;
+	grid-template-columns: 25% 75%;
+}
+
+.ulfilter{
+	list-style-type: none;	
+}
+
+.filter-pro h3{
+	margin-top: 50px;
+}
+
+.liprod{
+	margin-bottom: 50px;
+}
+
+.ulpricecart ul a:hover{
+	text-decoration: none;
+}
+
+.addprotocart{
+	text-decoration: none;
+	
+}
+
+.ulpricecart a {
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #FCA311;
+	text-decoration: none;
+	color: #000000;
+	padding: 8px 16px;
+}
+
+.ulpricecart a:hover {
+	color: #FCA311;
+	background-color: #14213D;
+	transition: all 0.5s;
+	text-decoration: none;
+}
+
+.cart-details {
+	display: grid;
+	grid-template-columns: 100%;
+}
+
+.cart-pro{
+	display: grid;
+	grid-template-columns: 25% 45% 15% 15%;
+	border: 2px solid grey;
+	margin-bottom: 50px;
+}
+.pro-name-desc{
+	display: grid;
+	grid-template-columns: 100%;
+	margin-left: 15px;
+	border-right: 2px solid grey;
+}
+.pro-price-quant{
+	display: grid;
+	grid-template-columns: 100%;
+}
+
+.pro-price-quant{
+		border-right: 2px solid grey;
+	
+}
+
+/* .cartbottom{
+	width: 100%;
+	height: 50px;
+} */
+
+.pro-img{
+	margin: 20px;
+	border: 5px solid grey;	
+
+}
+
+.cart-pro div{
+	margin: 20px;
+}
+
+.del-pro{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+
+.pro-price-quant{
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#cartcheck{
+	width: 9em;
+	height: 3em;
+	border-radius: 10px;
+	border: none;
+	background-color: #FCA311;
+	text-transform: uppercase;
+	color: #14213D;
+	font-weight: bold;
+	padding: 16px;
+	text-decoration: none;
+	
+}
+
+#cartcheck:hover{
+	width: 10em;
+	height: 4em;
+	color: #FCA311;
+	background-color: #14213D;
+	transition: all 0.5s;
+}
+
+

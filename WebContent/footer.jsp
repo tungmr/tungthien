@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="UTF-8">
 <title>TTSHOP - Thời trang nam cao cấp</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
 <!-- Latest compiled and minified CSS -->
@@ -27,71 +28,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="infoshop">
-		<div class="container">
-			<div class="infoshop-4">
-				<div class="if1">
-					<div class="infoshop-center">
-						<div class="infoshop-border">
-							<img src="images/truck.png" class="cangiua">
-
-							<h4 style="text-align: center;">THANH TOÁN &amp; GIAO HÀNG</h4>
-						</div>
-						<div>
-							<p>
-								Miễn phí vận chuyển cho đơn hàng trên 1.000.000 VNĐ<br> -
-								Giao hàng và thu tiền tận nơi <br> - Chuyển khoản và giao
-								hàng <br> - Mua hàng tại shop
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="if1">
-					<div>
-						<div class="infoshop-border">
-							<img src="images/credit-card.png" class="cangiua">
-							<h4 style="text-align: center;">THẺ THÀNH VIÊN</h4>
-						</div>
-						<div>
-							<p>
-								Chế độ ưu đãi thành viên VIP: <br> - 5% cho thành viên Bạc
-								<br> - 10% cho thành viên Vàng<br> - 15% cho thành
-								viên Kim cương
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="if1">
-					<div>
-						<div class="infoshop-border">
-							<img src="images/clock.png" class="cangiua" width="64px"
-								height="64.5px">
-							<h4 style="text-align: center;">GIỜ MỞ CỬA</h4>
-						</div>
-						<div>
-							<p>
-								<strong>8h30 đến 22:00</strong><br> - Tất cả các ngày trong
-								tuần<br> - Áp dụng cho tất cả các chi nhánh hệ thống cửa
-								hàng 4MEN
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="if1">
-					<div>
-						<div class="infoshop-border">
-							<img src="images/support.png" class="cangiua" width="64px"
-								height="64.5px">
-							<h4 style="text-align: center;">Hỗ trợ 24/7</h4>
-						</div>
-						<div>
-							<p>Gọi ngay cho chúng tôi khi bạn có thắc mắc - 098686868.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div class="bottom">
 		<div class="container">
 			<div class="about">
