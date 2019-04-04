@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import web.dao.ChiTietHoaDonDAO;
 import web.dao.HoaDonDAO;
+import web.dao.SanPhamDAO;
 import web.model.ChiTietHoaDon;
 import web.model.GioHang;
 import web.model.HoaDon;
@@ -54,7 +55,7 @@ public class CheckOutServlet extends HttpServlet {
 			User user = (User) httpSession.getAttribute("user");
 			GioHang gioHang = (GioHang) httpSession.getAttribute("cart");
 			try {
-				int ID = (int) new Date().getTime();
+				long ID = new Date().getTime();
 				HoaDon hoaDon = new HoaDon();
 				hoaDon.setId_hoaDon(ID);
 				hoaDon.setId_user(user.getIdUser());
@@ -62,10 +63,12 @@ public class CheckOutServlet extends HttpServlet {
 				hoaDon.setDiaChi(diaChi);
 				hoaDon.setTongTien(gioHang.TinhTienGioHang());
 				hoaDon.setDate(new Timestamp(new Date().getTime()));
+				
 				HoaDonDAO.themHoaDon(hoaDon);
 				for (Map.Entry<Long, VatPham> item : gioHang.getCacVatPham().entrySet()) {
 					ChiTietHoaDonDAO.themChiTietHoaDon(new ChiTietHoaDon(0,ID,item.getValue().getSanPham().getIdSanPham(),
 							item.getValue().getSanPham().getGiaSanPham(), item.getValue().getSoLuong()));
+					SanPhamDAO.truSoLuongSanPham(item.getValue().getSanPham().getIdSanPham(), item.getValue().getSoLuong());
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

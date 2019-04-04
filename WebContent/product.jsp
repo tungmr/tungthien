@@ -110,7 +110,7 @@
 					<div class="col-md-4 md-col">
 						<div class="col-md liprod">
 							<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
-								class="compare-in"><img src="<%=sp.getAnhSanPham()%>" alt=""
+								class="compare-in"><img src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" alt=""
 								id="imgpro" /> </a>
 							<div class="">
 								<h5
@@ -123,9 +123,24 @@
 											alt="" src="images/price.png"> <%=formatter.format(sp.getGiaSanPham())%>
 											VNĐ</li>
 
-										<li class="addprotocart"><a
-											href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
-												alt="" src="images/addtocart.png"> Thêm vào giỏ hàng</a></li>
+										<li class="addprotocart">
+										
+										<%
+												if (sp.getSoLuong()==0){
+												%>
+												<h6 style="font-weight: bold; font-size: 20px;">Đã hết hàng</h6>
+											<%
+											}else{
+												%><a href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
+												alt="" src="images/addtocart.png"> THÊM VÀO GIỎ HÀNG</a>
+												<%
+											}
+											%>
+													
+												
+												
+												
+												</li>
 									</ul>
 
 

@@ -3,7 +3,7 @@ package web.model;
 public class ChiTietHoaDon {
 
 	private int id_chiTietHD;
-	private int id_HoaDon;
+	private long id_HoaDon;
 	private int maSanPham;
 	private double giaSanPham;
 	private int soLuong;
@@ -12,7 +12,7 @@ public class ChiTietHoaDon {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ChiTietHoaDon(int id_chiTietHD, int id_HoaDon, int maSanPham, double giaSanPham, int soLuong) {
+	public ChiTietHoaDon(int id_chiTietHD, long id_HoaDon, int maSanPham, double giaSanPham, int soLuong) {
 		super();
 		this.id_chiTietHD = id_chiTietHD;
 		this.id_HoaDon = id_HoaDon;
@@ -26,10 +26,10 @@ public class ChiTietHoaDon {
 	public void setId_chiTietHD(int id_chiTietHD) {
 		this.id_chiTietHD = id_chiTietHD;
 	}
-	public int getId_HoaDon() {
+	public long getId_HoaDon() {
 		return id_HoaDon;
 	}
-	public void setId_HoaDon(int id_HoaDon) {
+	public void setId_HoaDon(long id_HoaDon) {
 		this.id_HoaDon = id_HoaDon;
 	}
 	public int getMaSanPham() {

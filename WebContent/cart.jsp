@@ -55,7 +55,7 @@
 			<div class="cart-pro">
 
 				<div class="pro-img">
-					<img alt="" src="<%=list.getValue().getSanPham().getAnhSanPham()%>"
+					<img alt="" src="/LapTrinhWeb/images/<%=list.getValue().getSanPham().getAnhSanPham()%>"
 						class="img-responsive">
 				</div>
 
@@ -73,17 +73,20 @@
 					</div>
 				</div>
 
-				<div class="pro-price-quant">
+				<div class="pro-price-quant" style="margin: 20px 0px; text-align: center;">
 					<div class="pro-price">
 						<h4 style="font-size: 15px;">
-							Giá: <br><%=formatter.format(list.getValue().getSanPham().getGiaSanPham())%>
-							VNĐ
+							<b >Giá <br><%=formatter.format(list.getValue().getSanPham().getGiaSanPham())%>
+							VNĐ</b>
 						</h4>
 					</div>
 					<div class="pro-quant">
-						<h6>
-							Số lượng <br><%=list.getValue().getSoLuong()%>
-						</h6>
+						<h4>
+							<b>Số lượng <br><%=list.getValue().getSoLuong()%></b>
+						</h4>
+						<br>
+						<a href="CartServlet?c=themincart&idSanPham=<%=list.getValue().getSanPham().getIdSanPham()%>">
+						<img alt="" src="images/addplus.png"></a>
 					</div>
 				</div>
 

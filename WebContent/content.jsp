@@ -1,3 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="web.dao.SanPhamDAO"%>
+<%@page import="web.model.SanPham"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,104 +33,106 @@
 <body>
 	<div class="container">
 
+		<%
+			DecimalFormat formatter = new DecimalFormat("###,###,###");
 
+			ArrayList<SanPham> listSPMoi = SanPhamDAO.getListSanPhamMoi();
+			ArrayList<SanPham> listSPNoiBat = SanPhamDAO.getListSanPhamNoiBat();
+		%>
 
-		<div class="new-product">
+		<div class="products">
 			<a href="#"><h2>
 					Sản phẩm mới <img src="images/right.png" width="11px" height="11px">
 				</h2></a>
-			<div class="new-product-child">
-				<div class="child1">
-					<div>
-						<div class="appear1"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
+			<%
+				for (SanPham sp : listSPMoi) {
+			%>
+			<div class="col-md-4 md-col">
+				<div class="col-md liprod">
+					<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
+						class="compare-in"><img
+						src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" alt=""
+						id="imgpro" /> </a>
+					<div class="">
+						<h5
+							style="font-size: 18px; text-transform: uppercase; text-align: center; color: black;">
+							<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"><%=sp.getTenSanPham()%></a>
+						</h5>
+						<div class="ulpricecart">
+							<ul style="list-style-type: none; text-align: center;">
+								<li style="margin-bottom: 10px; font-weight: bold;"><img
+									alt="" src="images/price.png"> <%=formatter.format(sp.getGiaSanPham())%>
+									VNĐ</li>
 
-				<div class="child2">
-					<div>
-						<div class="appear2"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
+								<li class="addprotocart"><a
+									href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
+										alt="" src="images/addtocart.png"> Thêm vào giỏ hàng</a></li>
+							</ul>
 
-				<div class="child3">
-					<div>
-						<div class="appear3"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
+
+
+						</div>
 					</div>
 				</div>
 			</div>
+			<%
+				}
+			%>
+
+
 		</div>
 
-		<div class="highlight">
+		<div class="products">
 			<a href="#"><h2>
 					Những sản phẩm bán chạy <img src="images/right.png" width="11px"
 						height="11px">
 				</h2></a>
-			<div class="highlight-child">
-				<div class="light-child1">
-					<div>
-						<div class="lightappear1"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
+			<%
+				for (SanPham sp : listSPNoiBat) {
+			%>
+			<div class="col-md-4 md-col">
+				<div class="col-md liprod">
+					<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
+						class="compare-in"><img
+						src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" alt=""
+						id="imgpro" /> </a>
+					<div class="">
+						<h5
+							style="font-size: 18px; text-transform: uppercase; text-align: center; color: black;">
+							<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"><%=sp.getTenSanPham()%></a>
+						</h5>
+						<div class="ulpricecart">
+							<ul style="list-style-type: none; text-align: center;">
+								<li style="margin-bottom: 10px; font-weight: bold;"><img
+									alt="" src="images/price.png"> <%=formatter.format(sp.getGiaSanPham())%>
+									VNĐ</li>
+
+								<li class="addprotocart">
+								<%
+										if (sp.getSoLuong()==0){
+								%>
+										<h6 style="font-weight: bold; font-size: 20px;">Đã hết hàng</h6>
+								<%
+										}else{
+									%><a href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
+										alt="" src="images/addtocart.png"> THÊM VÀO GIỎ HÀNG</a>
+										<%
+									}
+									%>
+										
+										
+										</li>
+							</ul>
+
+
+
+						</div>
 					</div>
 				</div>
-
-				<div class="light-child2">
-					<div>
-						<div class="lightappear2"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
-
-				<div class="light-child3">
-					<div>
-						<div class="lightappear3"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
-
-				<div class="light-child4">
-					<div>
-						<div class="lightappear4"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
-
-				<div class="light-child5">
-					<div>
-						<div class="lightappear5"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
-
-				<div class="light-child6">
-					<div>
-						<div class="lightappear6"></div>
-					</div>
-					<div class="style-new-pro">
-						<a href="#">Outfit 2019</a>
-					</div>
-				</div>
-
-
 			</div>
+			<%
+				}
+			%>
 
 		</div>
 		<!-- đây có xóa cái </div> -->
@@ -134,8 +140,8 @@
 		<div class="video">
 			<div>
 				<h2>MEN'S OUTFIT INSPIRATION</h2>
-				<iframe width="1120" height="720" src="video/menoutfit.mp4"
-					frameborder="0"
+				<iframe width="1120" height="720"
+					src="https://www.youtube.com/embed/cUxYmYdMZXU" frameborder="0"
 					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
 			</div>

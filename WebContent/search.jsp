@@ -35,52 +35,67 @@
 			{
 		%>
 
-		
-			<div class="products">
-				<h2 class=" products-in">Kết quả tìm kiếm: <%=search %></h2>
-				<div class="">
-					<%
-						for (SanPham sp : listSP) {
-					%>
-					<div class="col-md-3 md-col">
-						<div class="col-md liprod">
-							<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
-								class="compare-in"><img src="<%=sp.getAnhSanPham()%>"
-								id="imgpro" /> </a>
-							<div class="">
-								<h5
-									style="font-size: 18px; text-transform: uppercase; text-align: center; color: black;">
-									<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"><%=sp.getTenSanPham()%></a>
-								</h5>
-								<div class="ulpricecart">
-									<ul style="list-style-type: none; text-align: center;">
-										<li style="margin-bottom: 10px; font-weight: bold;"><img
-											alt="" src="images/price.png"> <%=formatter.format(sp.getGiaSanPham())%>
-											VNĐ</li>
 
-										<li class="addprotocart"><a
-											href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
-												alt="" src="images/addtocart.png"> Thêm vào giỏ hàng</a></li>
-									</ul>
+		<div class="products">
+			<h2 class=" products-in">
+				Kết quả tìm kiếm:
+				<%=search%></h2>
+			<div class="">
+				<%
+					for (SanPham sp : listSP) {
+				%>
+				<div class="col-md-3 md-col">
+					<div class="col-md liprod">
+						<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
+							class="compare-in"><img src="<%=sp.getAnhSanPham()%>"
+							id="imgpro" /> </a>
+						<div class="">
+							<h5
+								style="font-size: 18px; text-transform: uppercase; text-align: center; color: black;">
+								<a href="detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"><%=sp.getTenSanPham()%></a>
+							</h5>
+							<div class="ulpricecart">
+								<ul style="list-style-type: none; text-align: center;">
+									<li style="margin-bottom: 10px; font-weight: bold;"><img
+										alt="" src="images/price.png"> <%=formatter.format(sp.getGiaSanPham())%>
+										VNĐ</li>
+
+									<li class="addprotocart">
+									<%
+												if (sp.getSoLuong()==0){
+												%>
+												<h6 style="font-weight: bold; font-size: 20px;">Đã hết hàng</h6>
+												<%
+											}else{
+												%><a href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"><img
+												alt="" src="images/addtocart.png"> THÊM VÀO GIỎ HÀNG</a>
+												<%
+											}
+											%>
+													
+									
+									
+									</li>
+								</ul>
 
 
 
-								</div>
 							</div>
 						</div>
 					</div>
-					<%
-						}
-					%>
-
-
-
-				
 				</div>
-				
+				<%
+					}
+				%>
+
+
+
+
 			</div>
 
-		
+		</div>
+
+
 
 
 

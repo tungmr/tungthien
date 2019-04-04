@@ -66,17 +66,17 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
 	src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=257869411834839&autoLogAppEvents=1"></script>
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
 <body>
 
 	<%
-		DanhMucDAO getDanhMuc = new DanhMucDAO();
-		List<DanhMuc> listDanhMuc = getDanhMuc.getDanhMuc();
+		List<DanhMuc> listDanhMuc = DanhMucDAO.getDanhMuc();
 
-		TheLoaiDAO getSanPham = new TheLoaiDAO();
-		List<TheLoai> listTheLoai = getSanPham.getTheLoai();
+		List<TheLoai> listTheLoai = TheLoaiDAO.getTheLoai();
 
 		GioHang gioHang = (GioHang) session.getAttribute("cart");
 		if (gioHang == null) {
@@ -90,34 +90,57 @@
 		if (session.getAttribute("user") != null) {
 			user = (User) session.getAttribute("user");
 		}
-	%>
-	<div class="container">
+	%> 
+	
+	<nav
+		class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+		style="margin-bottom: 0;border: none;border-radius: none;">
 		<%
 			if (user != null) {
+				
 		%>
-		<div class="hello-user"
-			style="display: flex; padding-right: 8px; justify-content: flex-end; align-content: center; font-size: 20px; padding-left: 8px;">
-			<p>
-				Xin chào,<%=user.getUserName()%></p>
-			<a href="Logout" style="margin-left: 10px;">Đăng xuất <img alt=""
-				src="images/logout.png"></a>
-		</div>
+		<div class="container">
+		<ul class="navbar-nav ml-auto">
+			<!-- Nav Item - User Information -->
+			<li class="nav-item dropdown no-arrow">
+			<a
+				class="nav-link dropdown-toggle" href="#" id="userDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <span
+					class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 18px;">Xin chào, <%=user.getUserName() %>
+						</span> <img class="img-profile rounded-circle"
+					src="images/user.png">
+			</a>
+				<div
+					class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+					aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="#"> <i
+						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông tin cá nhân
+					</a>
+
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="Logout"> <i
+						class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+						Đăng xuất
+					</a>
+				</div></li>
+
+		</ul>
 
 		<%
 			} else {
 		%>
-
-		<div class="log-in-out"
-			style="display: flex; padding-right: 8px; justify-content: flex-end; align-content: center; font-size: 20px; padding-left: 8px;">
-			<a href="login.jsp" style="margin-right: 20px;">Đăng nhập <img
-				alt="" src="images/login.png"></a> <a href="register.jsp">Đăng
-				kí <img alt="" src="images/register.png">
-			</a>
+		<div class= "container">
+			<ul class="navbar-nav ml-auto" >
+			<li><a href="login.jsp" style="margin-right: 20px;color: #FCA311; text-decoration: none;">Đăng nhập <img alt="" src="images/login.png"></a> </li> 
+			<li><a href="register.jsp" style="color: #FCA311; text-decoration: none;">Đăng kí <img alt="" src="images/register.png" ></a></li>
+			</ul>
 		</div>
 		<%
 			}
 		%>
-	</div>
+		</div>
+	</nav>
 	<div class="">
 		<div class="header" id="topne">
 			<div class="logo">
@@ -137,7 +160,7 @@
 			</div>
 			<div class="cart"
 				style="display: flex; justify-content: flex-start; align-items: center;">
-				<a href="#">CHECKOUT</a>
+				<a href="cart.jsp">XEM GIỎ HÀNG</a>
 				<ul class="icon1 sub-icon1">
 
 					<li><div class="cart">
@@ -159,7 +182,8 @@
 									<div class="message">
 										<div class="alert-close"></div>
 										<div class="list_img">
-											<img src="<%=list.getValue().getSanPham().getAnhSanPham()%>"
+											<img
+												src="/LapTrinhWeb/images/<%=list.getValue().getSanPham().getAnhSanPham()%>"
 												class="img-responsive" alt="">
 										</div>
 										<div class="list_desc">
@@ -201,7 +225,7 @@
 							</div>
 							<div class="checkout">
 								<div class="check">
-									<a href="checkout.jsp" class="check">CHECKOUT</a>
+									<a href="checkout.jsp" class="check">Đặt hàng</a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -272,18 +296,18 @@
 						<div class="large-12 column">
 							<div class="xzoom-container">
 								<img class="xzoom" id="xzoom-default"
-									src="<%=sp.getAnhSanPham()%>"
-									xoriginal="<%=sp.getAnhSanPham()%>" width="100%" height="100%" />
+									src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"
+									xoriginal="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" width="100%" height="100%" />
 								<div class="xzoom-thumbs">
-									<a href="<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="<%=sp.getAnhSanPham()%>"
-										xpreview="<%=sp.getAnhSanPham()%>">
-									</a> <a href="<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="<%=sp.getAnhSanPham()%>">
-									</a> <a href="<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="<%=sp.getAnhSanPham()%>">
-									</a> <a href="<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="<%=sp.getAnhSanPham()%>">
+									<a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
+										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"
+										xpreview="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
+									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
+										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
+									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
+										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
+									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
+										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
 									</a>
 								</div>
 							</div>
@@ -302,9 +326,21 @@
 						</h4>
 					</div>
 					<div class="addcart">
-						<a href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"
+					<%
+					if (sp.getSoLuong()==0){
+						%>
+							<h6 class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 "
+							id="add-cart" style="font-weight: bold;">Đã hết hàng</h6>
+						<%
+					}else{
+						%>
+							<a href="CartServlet?c=them&idSanPham=<%=sp.getIdSanPham()%>"
 							class="hvr-shutter-in-vertical hvr-shutter-in-vertical2 "
 							id="add-cart" style="font-weight: bold;">THÊM VÀO GIỎ HÀNG</a>
+						<%
+					}
+					%>
+					
 					</div>
 
 					<div>
@@ -345,7 +381,7 @@
 
 	<div class="container">
 		<div class="fb-comments"
-			data-href="http://localhost:8080/LapTrinhWeb/detail.jsp?idSanPham=<%=sp.getIdSanPham() %>"
+			data-href="http://localhost:8080/LapTrinhWeb/detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
 			data-width="55em" data-numposts="5"></div>
 	</div>
 
@@ -423,6 +459,10 @@
 		    });
 		});
 	</script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/sb-admin-2.min.js"></script>
 	<script src="zoom/js/foundation.min.js"></script>
 	<script src="zoom/js/setup.js"></script>
 </body>

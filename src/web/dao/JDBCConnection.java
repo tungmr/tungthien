@@ -15,7 +15,7 @@ public class JDBCConnection {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
 			if (conn != null) {
-				System.out.println("Da ket noi thanh cong");
+				//System.out.println("Da ket noi thanh cong");
 			}
 		} catch (ClassNotFoundException ex) {
 			System.out.print("Ko load dc driver!");

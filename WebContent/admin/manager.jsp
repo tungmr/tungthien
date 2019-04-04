@@ -1,3 +1,4 @@
+<%@page import="web.model.User"%>
 <%@ page language="java"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,18 @@
 	<![endif]-->
 </head>
 <body>
-	
+	<%
+	User user = null;
+	if (session.getAttribute("user") != null) {
+		user = (User) session.getAttribute("user");
+	}
+	if (user != null && user.getRoleUser() == 0) {
+		response.sendRedirect("/LapTrinhWeb/index.jsp");
+	} else if (user == null) {
+		response.sendRedirect("/LapTrinhWeb/login.jsp");
+	}
+%>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	
 	<jsp:include page="menu.jsp"></jsp:include>

@@ -29,6 +29,7 @@ public class SanPhamDAO {
 				sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 				sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 				sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+				sanPham.setSoLuong(resultSet.getInt("soluong"));
 				listSanPhamByTheLoai.add(sanPham);
 			}
 
@@ -57,6 +58,8 @@ public class SanPhamDAO {
 				sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 				sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 				sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+				sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 				listSanPhamByDanhMuc.add(sanPham);
 			}
 		} catch (Exception e) {
@@ -81,6 +84,8 @@ public class SanPhamDAO {
 				sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 				sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 				sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+				sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -109,6 +114,8 @@ public class SanPhamDAO {
 				sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 				sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 				sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+				sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 				listSP.add(sanPham);
 			}
 		} catch (Exception e) {
@@ -156,6 +163,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 			} catch (Exception e) {
@@ -200,6 +209,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 			} catch (Exception e) {
@@ -225,6 +236,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 			} catch (Exception e) {
@@ -250,6 +263,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 			} catch (Exception e) {
@@ -275,6 +290,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 			} catch (Exception e) {
@@ -300,6 +317,8 @@ public class SanPhamDAO {
 					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
 					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
 					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
 					listSP.add(sanPham);
 				}
 				
@@ -311,10 +330,113 @@ public class SanPhamDAO {
 			return listSP;
 		}
 		
+		public static boolean themSanPham(SanPham sanPham) {
+			String sql = "INSERT INTO sanpham(theloai,danhmuc,tensanpham,anhsanpham,giasanpham,motasanpham,soluong) VALUES(?,?,?,?,?,?,?)";
+			Connection connection = JDBCConnection.myConnect();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, sanPham.getTheLoai());
+				preparedStatement.setInt(2, sanPham.getDanhMuc());
+				preparedStatement.setString(3, sanPham.getTenSanPham());
+				preparedStatement.setString(4, sanPham.getAnhSanPham());
+				preparedStatement.setDouble(5, sanPham.getGiaSanPham());
+				preparedStatement.setString(6, sanPham.getMoTaSanPham());
+				preparedStatement.setInt(7, sanPham.getSoLuong());
+				return preparedStatement.executeUpdate() ==1;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return false;
+		}
+		
+		public static ArrayList<SanPham> getListSanPhamMoi (){
+			Connection connection = JDBCConnection.myConnect();
+			String sql = "SELECT * FROM sanpham order by id_sanpham desc LIMIT 3";
+			ArrayList<SanPham> listSP = new ArrayList<>();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next()) {
+					SanPham sanPham = new SanPham();
+					sanPham.setIdSanPham(resultSet.getInt("id_sanpham"));
+					sanPham.setDanhMuc(resultSet.getInt("danhmuc"));
+					sanPham.setTheLoai(resultSet.getInt("theloai"));
+					sanPham.setTenSanPham(resultSet.getString("tensanpham"));
+					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
+					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
+					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
 
-	/*public static void main(String[] args) {
-		ArrayList<SanPham> listSP = SanPhamDAO.getListSanPham();
-		System.out.println(listSP.size());
-	}*/
+					listSP.add(sanPham);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return listSP;
+		}
+		public static ArrayList<SanPham> getListSanPhamNoiBat(){
+			Connection connection = JDBCConnection.myConnect();
+			String sql = "SELECT * FROM sanpham ORDER BY RAND() LIMIT 3";
+			ArrayList<SanPham> listSP = new ArrayList<>();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while(resultSet.next()) {
+					SanPham sanPham = new SanPham();
+					sanPham.setIdSanPham(resultSet.getInt("id_sanpham"));
+					sanPham.setDanhMuc(resultSet.getInt("danhmuc"));
+					sanPham.setTheLoai(resultSet.getInt("theloai"));
+					sanPham.setTenSanPham(resultSet.getString("tensanpham"));
+					sanPham.setAnhSanPham(resultSet.getString("anhsanpham"));
+					sanPham.setGiaSanPham(resultSet.getDouble("giasanpham"));
+					sanPham.setMoTaSanPham(resultSet.getString("motasanpham"));
+					sanPham.setSoLuong(resultSet.getInt("soluong"));
+
+					listSP.add(sanPham);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return listSP;
+		}
+		
+		public static boolean truSoLuongSanPham(int idSanPham, int soLuong) {
+			SanPham sanPham = SanPhamDAO.getSanPhamByIdSanPham(idSanPham);
+			int soLuongMoi = sanPham.getSoLuong() - soLuong;
+			String sql = "UPDATE sanpham SET soluong=? WHERE id_sanpham=?" ;
+			Connection connection = JDBCConnection.myConnect();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, soLuongMoi);
+				preparedStatement.setInt(2, idSanPham);
+				return preparedStatement.executeUpdate()==1;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return false;
+			
+		}
+		
+		public static int getSoLuongMotSanPham(int idSanPham) {
+			String sql = "SELECT soluong FROM sanpham WHERE id_sanpham=?";
+			Connection connection = JDBCConnection.myConnect();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idSanPham);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					return resultSet.getInt(1);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return 0;
+		}
+		
+		public static void main(String[] args) {
+			//System.out.println(SanPhamDAO.getListSanPhamMoi().size());
+			
+			//System.out.println(SanPhamDAO.getSoLuongMotSanPham(4));
+		}
 
 }

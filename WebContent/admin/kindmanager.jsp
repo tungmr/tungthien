@@ -1,3 +1,4 @@
+<%@page import="web.model.User"%>
 <%@page import="web.dao.TheLoaiDAO"%>
 <%@page import="web.model.TheLoai"%>
 <%@page import="web.dao.DanhMucDAO"%>
@@ -15,33 +16,46 @@
 <title>Quản lý loại sản phẩm</title>
 </head>
 <body>
+	<%
+	User user = null;
+	if (session.getAttribute("user") != null) {
+		user = (User) session.getAttribute("user");
+	}
+	if (user != null && user.getRoleUser() == 0) {
+		response.sendRedirect("/LapTrinhWeb/index.jsp");
+	} else if (user == null) {
+		response.sendRedirect("/LapTrinhWeb/login.jsp");
+	}
+%>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
 
-		<a href="addkindmanager.jsp" class="addkinda">
-		<img alt="" src="images/plus-button.png">Thêm loại sản phẩm mới</a>
+		<a href="addkindmanager.jsp" class="addkinda"> <img alt=""
+			src="images/plus-button.png">Thêm loại sản phẩm mới
+		</a>
 		<%
-		if(request.getParameter("adsc")!=null)
-		if (request.getParameter("adsc").equals("1")){
-			%>
-			<p style="color: blue;">Đã thêm loại sản phẩm mới!</p>
-			<%
-		}
-		
-		if(request.getParameter("delsc")!=null)
-			if (request.getParameter("delsc").equals("1")){
-				%>
-				<p style="color: blue;">Đã xóa!</p>
-				<%
+			if (request.getParameter("adsc") != null)
+				if (request.getParameter("adsc").equals("1")) {
+		%>
+		<p style="color: blue;">Đã thêm loại sản phẩm mới!</p>
+		<%
 			}
-		
-		if(request.getParameter("edsc")!=null)
-			if (request.getParameter("edsc").equals("1")){
-				%>
-				<p style="color: blue;">Đã chỉnh sửa loại sản phẩm!</p>
-				<%
+
+			if (request.getParameter("delsc") != null)
+				if (request.getParameter("delsc").equals("1")) {
+		%>
+		<p style="color: blue;">Đã xóa!</p>
+		<%
+			}
+
+			if (request.getParameter("edsc") != null)
+				if (request.getParameter("edsc").equals("1")) {
+		%>
+		<p style="color: blue;">Đã chỉnh sửa loại sản phẩm!</p>
+		<%
 			}
 		%>
 
@@ -57,8 +71,7 @@
 			<tbody>
 
 				<%
-					TheLoaiDAO theLoaiDAO = new TheLoaiDAO();
-					List<TheLoai> listTheLoai = theLoaiDAO.getTheLoai();
+					List<TheLoai> listTheLoai = TheLoaiDAO.getTheLoai();
 					for (int i = 0; i < listTheLoai.size(); i++) {
 				%>
 

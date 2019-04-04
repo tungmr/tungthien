@@ -1,3 +1,4 @@
+<%@page import="web.model.User"%>
 <%@ page language="java"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,6 +20,7 @@
 	<![endif]-->
 </head>
 <body>
+	
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">

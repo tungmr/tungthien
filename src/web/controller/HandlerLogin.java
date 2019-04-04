@@ -45,8 +45,12 @@ public class HandlerLogin extends HttpServlet {
 				User user = UserDAO.getUser(username);
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("user", user);
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-				requestDispatcher.forward(request, response);
+				int role = user.getRoleUser();
+				if (role ==0) {
+					response.sendRedirect("index.jsp");
+				}else if (role ==1) {
+					response.sendRedirect("/LapTrinhWeb/admin/manager.jsp");
+				}
 			} else {
 
 				response.sendRedirect("login.jsp?e=1");

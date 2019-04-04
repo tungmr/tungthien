@@ -31,7 +31,7 @@ public class TheLoaiDAO {
 		return theLoai;
 	}
 	
-	public List<TheLoai> getTheLoai() {
+	public static List<TheLoai> getTheLoai() {
 		List<TheLoai> listTheLoai = new ArrayList<TheLoai>();
 
 		Connection connection = JDBCConnection.myConnect();

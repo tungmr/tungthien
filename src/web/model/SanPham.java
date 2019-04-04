@@ -9,7 +9,7 @@ public class SanPham {
 	private String anhSanPham;
 	private double giaSanPham;
 	private String moTaSanPham;
-
+	private int soLuong;
 
 
 	
@@ -21,8 +21,8 @@ public class SanPham {
 	
 	
 
-	public SanPham(int theLoai, int danhMuc, int idSanPham, String tenSanPham, String anhSanPham, double giaSanPham,
-			String moTaSanPham) {
+	public SanPham( int idSanPham, int theLoai, int danhMuc, String tenSanPham, String anhSanPham, double giaSanPham,
+			String moTaSanPham, int soLuong) {
 		super();
 		this.theLoai = theLoai;
 		this.danhMuc = danhMuc;
@@ -31,6 +31,7 @@ public class SanPham {
 		this.anhSanPham = anhSanPham;
 		this.giaSanPham = giaSanPham;
 		this.moTaSanPham = moTaSanPham;
+		this.soLuong = soLuong;
 	}
 
 
@@ -90,5 +91,15 @@ public class SanPham {
 	public void setMoTaSanPham(String moTaSanPham) {
 		this.moTaSanPham = moTaSanPham;
 	}
+
+	public int getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	
+	
 
 }

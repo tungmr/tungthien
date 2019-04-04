@@ -58,7 +58,7 @@
 					</ul>
 				</div>
 
-				<div class="help">
+				<div class="help ">
 					<h2 style="text-align: center;">Trợ giúp và tư vấn</h2>
 					<ul>
 						<li><img src="images/right.png" width="11px" height="11px">
@@ -72,7 +72,7 @@
 					</ul>
 				</div>
 
-				<div class="contact">
+				<div class="contact" style="padding: 0;">
 					<h2 style="text-align: center;">Kết nối</h2>
 					<ul>
 						<li><a href="#" title="Đi đến trang facebook chúng tôi"><img

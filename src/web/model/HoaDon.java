@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 
 public class HoaDon {
 
-	private int id_hoaDon;
+	private long id_hoaDon;
 	private int id_user;
 	private double tongTien;
 	private String phuongThucThanhToan;
 	private String diaChi;
 	private Timestamp ngay;
 	
-	public HoaDon(int id_hoaDon, int id_user, double tongTien, String phuongThucThanhToan, String diaChi,
+	public HoaDon(long id_hoaDon, int id_user, double tongTien, String phuongThucThanhToan, String diaChi,
 			Timestamp ngay) {
 		super();
 		this.id_hoaDon = id_hoaDon;
@@ -26,10 +26,10 @@ public class HoaDon {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getId_hoaDon() {
+	public long getId_hoaDon() {
 		return id_hoaDon;
 	}
-	public void setId_hoaDon(int id_hoaDon) {
+	public void setId_hoaDon(long id_hoaDon) {
 		this.id_hoaDon = id_hoaDon;
 	}
 	public int getId_user() {

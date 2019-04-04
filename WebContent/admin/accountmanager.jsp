@@ -1,3 +1,6 @@
+<%@page import="web.dao.UserDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="web.model.User"%>
 <%@ page language="java"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +11,17 @@
 <title>Quản lý sản phẩm</title>
 </head>
 <body>
+	<%
+	User user = null;
+	if (session.getAttribute("user") != null) {
+		user = (User) session.getAttribute("user");
+	}
+	if (user != null && user.getRoleUser() == 0) {
+		response.sendRedirect("/LapTrinhWeb/index.jsp");
+	} else if (user == null) {
+		response.sendRedirect("/LapTrinhWeb/login.jsp");
+	}
+%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="menu.jsp"></jsp:include>
 
@@ -17,31 +31,32 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">STT</th>
+					<th scope="col">ID User</th>
+					<th scope="col">Username</th>
+					<th scope="col">Email</th>
+					<th scope="col">Số điện thoại</th>
 				</tr>
 			</thead>
 			<tbody>
+			
+			<%
+				ArrayList<User> listUser = UserDAO.getListUser();
+			
+				for (int i=0;i<listUser.size();i++){
+					
+				
+			%>
+			
 				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
+					<th scope="row"><%=i+1 %></th>
+					<td><%=listUser.get(i).getIdUser() %></td>
+					<td><%=listUser.get(i).getUserName() %></td>
+					<td><%=listUser.get(i).getEmailUser() %></td>
+					<td><%=listUser.get(i).getPhoneNumberUser()%></td>
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
-					<td>@twitter</td>
-				</tr>
+				<%} %>
+				
 			</tbody>
 		</table>
 

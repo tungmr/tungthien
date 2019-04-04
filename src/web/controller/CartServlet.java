@@ -20,7 +20,6 @@ import web.model.VatPham;
  */
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
-	private final SanPhamDAO sanPhamDAO = new SanPhamDAO();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,19 +43,36 @@ public class CartServlet extends HttpServlet {
 		
 		try {
 			int idSP = Integer.parseInt(idSanPham);
-			SanPham sanPham = sanPhamDAO.getSanPhamByIdSanPham(idSP);
+			SanPham sanPham = SanPhamDAO.getSanPhamByIdSanPham(idSP);
+			//System.out.println(gioHang.getCacVatPham().containsKey(Long.parseLong(idSanPham)));
 			switch (c) {
 			case "them":
-				if (gioHang.getCacVatPham().containsKey(idSP)) {
-					gioHang.ThemVaoGioHang(Long.parseLong(idSanPham), new VatPham(sanPham, gioHang.getCacVatPham().get(idSP).getSoLuong()));
+				if (gioHang.getCacVatPham().containsKey(Long.parseLong(idSanPham))) {
+					gioHang.ThemVaoGioHang(Long.parseLong(idSanPham), new VatPham(sanPham, gioHang.getCacVatPham().get(Long.parseLong(idSanPham)).getSoLuong()));
 				}else {
+					//System.out.println("Vào đây");
 					gioHang.ThemVaoGioHang(Long.parseLong(idSanPham), new VatPham(sanPham, 1));
 				}
+				httpSession.removeAttribute("cart");
+				httpSession.setAttribute("cart", gioHang);
+				response.sendRedirect("index.jsp");
+
+				break;
 				
+			case "themincart":
+				gioHang.ThemVaoGioHang(Long.parseLong(idSanPham), new VatPham(sanPham, gioHang.getCacVatPham().get(Long.parseLong(idSanPham)).getSoLuong()));
+				httpSession.removeAttribute("cart");
+
+				httpSession.setAttribute("cart", gioHang);
+				response.sendRedirect("cart.jsp");
+
 				break;
 				
 			case "xoa":
 				gioHang.XoaVatPham(Long.parseLong(idSanPham));
+				httpSession.setAttribute("cart", gioHang);
+				response.sendRedirect("index.jsp");
+
 				break;
 
 			default:
@@ -69,8 +85,7 @@ public class CartServlet extends HttpServlet {
 
 		}
 		
-		httpSession.setAttribute("cart", gioHang);
-		response.sendRedirect("index.jsp");
+		
 				
 	}
 

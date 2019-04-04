@@ -36,7 +36,9 @@ public class HandlerRegister extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		if (!request.getParameter("username").equals("") && !request.getParameter("email").equals("")
 				&& !request.getParameter("password").equals("") 	&& !request.getParameter("repassword").equals("") && !request.getParameter("phoneNumber").equals("")) {
 			String username = request.getParameter("username");

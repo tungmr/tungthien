@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
  <meta charset="UTF-8">
-<title>Check out</title>
+<title>Đặt hàng</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="./style.css">
 
@@ -36,16 +36,15 @@
 	%>
 	<div class="container centerdathang">
 		<div class="dathang">
-			<h2>Check out</h2>
+			<h2>Đặt hàng</h2>
 			<form action="CheckOutServlet" method="POST">
-				<label>Số điện thoại</label> <input type="text" name="soDienThoai"> <br>
 				<label>Địa chỉ</label> <input type="text" name="diachi"> <br>
 				<label>Hình thức thanh toán</label> 
 					<select name="phuongthuc">
 					<option value="Trực tiếp">Trực tiếp</option>
 				</select> <br>
 				<div style="text-align: center;">
-				<input type="submit" value="Check out">
+				<input type="submit" value="Đặt hàng">
 				<%
 				if (request.getParameter("e")!=null)
 				if ( request.getParameter("e").equals("1")){

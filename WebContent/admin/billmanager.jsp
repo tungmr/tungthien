@@ -1,3 +1,10 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="web.dao.UserDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="web.dao.HoaDonDAO"%>
+<%@page import="web.model.HoaDon"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="web.model.User"%>
 <%@ page language="java"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +28,19 @@
 	<![endif]-->
 </head>
 <body>
+	<%
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+		User user = null;
+		if (session.getAttribute("user") != null) {
+			user = (User) session.getAttribute("user");
+		}
+		if (user != null && user.getRoleUser() == 0) {
+			response.sendRedirect("/LapTrinhWeb/index.jsp");
+		} else if (user == null) {
+			response.sendRedirect("/LapTrinhWeb/login.jsp");
+		}
+	%>
 
 
 	<jsp:include page="header.jsp"></jsp:include>
@@ -32,31 +52,44 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
+					<th scope="col">STT</th>
+					<th scope="col">Mã hóa đơn</th>
+					<th scope="col">Khách hàng</th>
+					<th scope="col">Tổng tiền</th>
+					<th scope="col">Phương thức thanh toán</th>
+					<th scope="col">Địa chỉ</th>
+					<th scope="col">Ngày</th>
+					<th scope="col">Trạng thái</th>
+					
+
 				</tr>
 			</thead>
+
+
+
 			<tbody>
+				<%
+					ArrayList<HoaDon> listHoaDon = HoaDonDAO.getListHoaDon();
+
+					for (int i=0;i<listHoaDon.size();i++) {
+						User userMua = UserDAO.getUserByID(listHoaDon.get(i).getId_user());
+				%>
+
 				<tr>
-					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
+					<th scope="row"><%=i+1 %></th>
+					<td><%=listHoaDon.get(i).getId_hoaDon() %></td>
+					<td><%=userMua.getUserName()%></td>
+					<td><%=formatter.format(listHoaDon.get(i).getTongTien())%></td>
+					<td><%=listHoaDon.get(i).getPhuongThucThanhToan() %></td>
+					<td><%=listHoaDon.get(i).getDiaChi() %></td>
+					<td><%=listHoaDon.get(i).getDate() %></td>
+					<td></td>
+					<td><a href="billdetail.jsp?user=<%=userMua.getIdUser()%>&idHoaDon=<%=listHoaDon.get(i).getId_hoaDon()%>">Xem chi tiết</a></td>
+					
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
-					<td>@twitter</td>
-				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</div>
