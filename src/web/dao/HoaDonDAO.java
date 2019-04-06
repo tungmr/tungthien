@@ -50,7 +50,7 @@ public class HoaDonDAO {
 		return listHD;
 	}
 	
-	public static HoaDon getListHoaDonByID(long idHoaDon){
+	public static HoaDon getHoaDonByID(long idHoaDon){
 		HoaDon hoaDon = new HoaDon();
 		Connection connection = JDBCConnection.myConnect();
 		String sql ="SELECT * FROM hoadon WHERE id_hoadon=?";
@@ -72,11 +72,36 @@ public class HoaDonDAO {
 		return hoaDon;
 	}
 	
+	public static ArrayList<HoaDon> getHoaDonCuaUser(int idUser) {
+		ArrayList<HoaDon> listHD = new ArrayList<>();
+		Connection connection = JDBCConnection.myConnect();
+		String sql = "SELECT * FROM hoadon WHERE id_user=?";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, idUser);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				HoaDon hoaDon = new HoaDon();
+				hoaDon.setId_hoaDon(resultSet.getLong(1));
+				hoaDon.setId_user(resultSet.getInt(2));
+				hoaDon.setTongTien(resultSet.getDouble(3));
+				hoaDon.setPhuongThucThanhToan(resultSet.getString(4));
+				hoaDon.setDiaChi(resultSet.getString(5));
+				hoaDon.setDate(resultSet.getTimestamp(6));
+				listHD.add(hoaDon);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return listHD;
+	}
+	
 	/*public static void main(String[] args) {
 		HoaDonDAO.themHoaDon(new HoaDon(5,6,5500,"trực tiếp","man thiện", new Date(2018, 8, 25)));
 	}*/
 	
 	public static void main(String[] args) {
 		//System.out.println(HoaDonDAO.getListHoaDon().size());
+		//System.out.println(HoaDonDAO.getHoaDonCuaUser(11).size());
 	}
 }

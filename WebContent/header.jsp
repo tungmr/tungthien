@@ -82,8 +82,8 @@
 				<div
 					class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="#" style="font-size: 18px;"> <i
-						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông tin cá nhân
+					<a class="dropdown-item" href="userprofile.jsp" style="font-size: 18px;"> <i
+						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Tài khoản và đơn hàng
 					</a>
 
 					<div class="dropdown-divider"></div>

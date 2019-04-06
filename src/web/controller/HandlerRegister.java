@@ -39,20 +39,17 @@ public class HandlerRegister extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		if (!request.getParameter("username").equals("") && !request.getParameter("email").equals("")
+		if (!request.getParameter("name").equals("") && !request.getParameter("username").equals("") && !request.getParameter("email").equals("")
 				&& !request.getParameter("password").equals("") 	&& !request.getParameter("repassword").equals("") && !request.getParameter("phoneNumber").equals("")) {
+			String name = request.getParameter("name");
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String hashPassword = MD5.md5(password);
 			String email = request.getParameter("email");
 			String phoneNumber = request.getParameter("phoneNumber");
-			String url = "/index.jsp";
-			User user = new User(0, username, hashPassword, email, phoneNumber, 0);
+			User user = new User(0,name, username, hashPassword, email, phoneNumber, 0);
 			if (UserDAO.insertUser(user)) {
-				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("user", user);
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(url);
-				requestDispatcher.forward(request, response);
+				response.sendRedirect("register.jsp?e=0");
 			} else
 				response.sendRedirect("register.jsp?e=1");
 		} else {

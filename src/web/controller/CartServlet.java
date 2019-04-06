@@ -67,6 +67,14 @@ public class CartServlet extends HttpServlet {
 				response.sendRedirect("cart.jsp");
 
 				break;
+			case "tru":
+				gioHang.TruSoLuong(Long.parseLong(idSanPham), new VatPham(sanPham, gioHang.getCacVatPham().get(Long.parseLong(idSanPham)).getSoLuong()));
+				httpSession.removeAttribute("cart");
+				
+				httpSession.setAttribute("cart", gioHang);
+				response.sendRedirect("cart.jsp");
+				break;
+				
 				
 			case "xoa":
 				gioHang.XoaVatPham(Long.parseLong(idSanPham));

@@ -91,11 +91,14 @@
 		}
 	%>
 
-	<div class="login-box" style="width: 620px; height: 650px;">
+	<div class="login-box" style="width: 40em; height: 55em;">
 		<img alt="" class="avatar" src="images/account.png">
 		<h1 style="font-weight: bold;">Đăng kí tài khoản</h1>
 		<form action="HandlerUser" method="POST">
-
+			<p>Họ và tên</p>
+			<input type="text" name="name"
+				 placeholder="Nhập vào họ tên của bạn" value=""
+				maxlength="100">
 			<p>Tên đăng nhập</p>
 			<span id="user-result"></span> <input type="text" name="username"
 				id="username" placeholder="Nhập vào tên đăng nhập của bạn" value=""
@@ -108,8 +111,9 @@
 				name="repassword" id="repassword"
 				placeholder="Nhập lại mật khẩu của bạn">
 			<p>Email</p>
-			<span id="email-result"></span> <input type="text" name="email" value=""
-				placeholder="Nhập vào Email của bạn" maxlength="30" id="email">
+			<span id="email-result"></span> <input type="text" name="email"
+				value="" placeholder="Nhập vào Email của bạn" maxlength="30"
+				id="email">
 			<p>Số điện thoại</p>
 			<input type="text" name="phoneNumber" value=""
 				placeholder="Nhập vào số điện thoại của bạn" maxlength="30">
@@ -119,6 +123,12 @@
 			%>
 			<p id="noti" style="color: red; margin-bottom: 10px;">Kiểm tra
 				lại thông tin!</p>
+			<%
+				} else if (e.equals("0")) {
+			%>
+			<p id="noti" style="color: green; margin: 20px 0px;;">
+				Đăng ký thành công, mời bạn <a href="login.jsp"> đăng nhập!</a>
+			</p>
 			<%
 				}
 			%>

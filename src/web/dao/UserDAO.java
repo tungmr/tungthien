@@ -55,14 +55,15 @@ public class UserDAO {
 	
 	public static boolean insertUser(User user) {
 		Connection connection = JDBCConnection.myConnect();
-		String sql = "INSERT INTO user(username,password,email,phonenumber,role) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO user(name,username,password,email,phonenumber,role) VALUES(?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, user.getUserName());
-			preparedStatement.setString(2, user.getPasswordUser());
-			preparedStatement.setString(3, user.getEmailUser());
-			preparedStatement.setString(4, user.getPhoneNumberUser());
-			preparedStatement.setInt(5, 0);
+			preparedStatement.setString(1, user.getName());
+			preparedStatement.setString(2, user.getUserName());
+			preparedStatement.setString(3, user.getPasswordUser());
+			preparedStatement.setString(4, user.getEmailUser());
+			preparedStatement.setString(5, user.getPhoneNumberUser());
+			preparedStatement.setInt(6, 0);
 			preparedStatement.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -99,7 +100,9 @@ public class UserDAO {
 			preparedStatement.setString(1, username);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
+				
 				user.setIdUser(resultSet.getInt("id_user"));
+				user.setName(resultSet.getString("name"));
 				user.setUserName(resultSet.getString("username"));
 				user.setPasswordUser(resultSet.getString("password"));
 				user.setEmailUser(resultSet.getString("email"));
@@ -125,6 +128,7 @@ public class UserDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				user.setIdUser(resultSet.getInt("id_user"));
+				user.setName(resultSet.getString("name"));
 				user.setUserName(resultSet.getString("username"));
 				user.setPasswordUser(resultSet.getString("password"));
 				user.setEmailUser(resultSet.getString("email"));
@@ -149,6 +153,7 @@ public class UserDAO {
 			while(resultSet.next()) {
 				User user = new User();
 				user.setIdUser(resultSet.getInt("id_user"));
+				user.setName(resultSet.getString("name"));
 				user.setUserName(resultSet.getString("username"));
 				user.setEmailUser(resultSet.getString("email"));
 				user.setPhoneNumberUser(resultSet.getString("phonenumber"));

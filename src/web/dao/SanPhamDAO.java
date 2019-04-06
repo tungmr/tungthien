@@ -433,6 +433,40 @@ public class SanPhamDAO {
 			return 0;
 		}
 		
+		public static boolean suaSanPham(SanPham sanPham, int idSanPham) {
+			String sql = "UPDATE sanpham SET theloai=?, danhmuc=? , tensanpham=?, anhsanpham=?, giasanpham=?, motasanpham=?, soluong=? WHERE id_sanpham=?";
+			Connection connection = JDBCConnection.myConnect();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, sanPham.getTheLoai());
+				preparedStatement.setInt(2, sanPham.getDanhMuc());
+				preparedStatement.setString(3, sanPham.getTenSanPham());
+				preparedStatement.setString(4, sanPham.getAnhSanPham());
+				preparedStatement.setDouble(5, sanPham.getGiaSanPham());
+				preparedStatement.setString(6, sanPham.getMoTaSanPham());
+				preparedStatement.setInt(7, sanPham.getSoLuong());
+				preparedStatement.setInt(8, idSanPham);
+				return preparedStatement.executeUpdate() ==1;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return false;
+		}
+		
+		public static boolean xoaSanPham (int idSanPham) {
+			String sql ="DELETE FROM sanpham WHERE id_sanpham=?";
+			Connection connection = JDBCConnection.myConnect();
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idSanPham);
+				return preparedStatement.executeUpdate()==1;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return false;
+		}
+		
+		
 		public static void main(String[] args) {
 			//System.out.println(SanPhamDAO.getListSanPhamMoi().size());
 			

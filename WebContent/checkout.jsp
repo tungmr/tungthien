@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="web.model.GioHang"%>
 <%@page import="web.model.User"%>
 <%@ page language="java"%>
@@ -20,6 +21,8 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	
 	<%
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+
 		User user = null;
 		if (session.getAttribute("user")!=null){
 			user = (User) session.getAttribute("user");
@@ -43,6 +46,7 @@
 					<select name="phuongthuc">
 					<option value="Trực tiếp">Trực tiếp</option>
 				</select> <br>
+				<label>Tổng tiền</label> <%=formatter.format(gioHang.TinhTienGioHang())%> VNĐ <br>
 				<div style="text-align: center;">
 				<input type="submit" value="Đặt hàng">
 				<%
@@ -56,7 +60,6 @@
 					<p style="font-size: 18px;color: blue;font-weight: bold;text-align: left;">Đặt hàng thành công, quay lại <a href="index.jsp">trang chủ</a>!</p>
 					<%
 					
-					session.removeAttribute("cart");
 				}
 				%>
 				

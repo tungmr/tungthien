@@ -40,12 +40,26 @@
 		<h2>QUẢN LÝ SẢN PHẨM</h2>
 		
 		<%
-			if (request.getParameter("adsc")!=null)
+			if (request.getParameter("adsc")!=null && request.getParameter("adscedit")==null && request.getParameter("delpro")==null )
+			{
 				if (request.getParameter("adsc").equals("1")){
 					%>
 					<p style="color: #30a5ff;">Đã thêm sản phẩm!</p>
 					<%
 				}
+			}else if (request.getParameter("adsc")==null && request.getParameter("adscedit")!=null && request.getParameter("delpro")==null){
+				if (request.getParameter("adscedit").equals("1")){
+					%>
+					<p style="color: #30a5ff;">Đã chỉnh sửa sản phẩm!</p>
+					<%
+				}
+			}else if (request.getParameter("adsc")==null && request.getParameter("adscedit")==null && request.getParameter("delpro")!=null){
+				if (request.getParameter("delpro").equals("1")){
+					%>
+					<p style="color: #30a5ff;">Đã xóa sản phẩm!</p>
+					<%
+				}
+			}
 		%>
 		<table class="table">
 			<thead>
@@ -82,8 +96,8 @@
 					<td><%=listSP.get(i).getSoLuong()%></td>
 					<td><%=listSP.get(i).getMoTaSanPham()%></td>
 					<td>
-					<a href="#">Sửa</a>|
-					<a href="#">Xóa</a>
+					<a href="editproduct.jsp?idSanPham=<%=listSP.get(i).getIdSanPham()%>">Sửa</a>|
+					<a href="/LapTrinhWeb/ProductsManager?idSanPham=<%=listSP.get(i).getIdSanPham()%>&c=xoa">Xóa</a>
 					</td>
 				</tr>
 				<%

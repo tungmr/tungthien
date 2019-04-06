@@ -49,13 +49,14 @@
 
 			ArrayList<ChiTietHoaDon> listChiTietHoaDon = ChiTietHoaDonDAO.getListChiTietHoaDon(idHoaDon);
 			User userMua = UserDAO.getUserByID(idUser);
-			HoaDon hoaDon = HoaDonDAO.getListHoaDonByID(idHoaDon);
+			HoaDon hoaDon = HoaDonDAO.getHoaDonByID(idHoaDon);
 		%>
 		<h3>Thông tin người mua</h3>
 
 		<table class="table">
 			<thead>
 				<tr>
+					<th scope="col">Họ tên</th>
 					<th scope="col">Username</th>
 					<th scope="col">Email</th>
 					<th scope="col">Số điện thoại</th>
@@ -68,6 +69,7 @@
 
 
 			<tr>
+				<td><%=userMua.getName()%></td>
 				<td><%=userMua.getUserName()%></td>
 				<td><%=userMua.getEmailUser()%></td>
 				<td><%=userMua.getPhoneNumberUser()%></td>

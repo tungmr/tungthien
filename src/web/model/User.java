@@ -3,6 +3,7 @@ package web.model;
 public class User {
 
 	private int idUser;
+	private String name;
 	private String userName;
 	private String passwordUser;
 	private String emailUser;
@@ -15,10 +16,11 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int idUser, String userName, String passwordUser, String emailUser, String phoneNumberUser,
+	public User(int idUser,String name, String userName, String passwordUser, String emailUser, String phoneNumberUser,
 			int roleUser) {
 		super();
 		this.idUser = idUser;
+		this.name = name;
 		this.userName = userName;
 		this.passwordUser = passwordUser;
 		this.emailUser = emailUser;
@@ -30,6 +32,14 @@ public class User {
 	}
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
+	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getUserName() {
 		return userName;

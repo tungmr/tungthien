@@ -76,7 +76,7 @@
 				<div class="pro-price-quant" style="margin: 20px 0px; text-align: center;">
 					<div class="pro-price">
 						<h4 style="font-size: 15px;">
-							<b >Giá <br><%=formatter.format(list.getValue().getSanPham().getGiaSanPham())%>
+							<b >Giá <br><%=formatter.format(list.getValue().getSanPham().getGiaSanPham()*list.getValue().getSoLuong())%>
 							VNĐ</b>
 						</h4>
 					</div>
@@ -85,6 +85,11 @@
 							<b>Số lượng <br><%=list.getValue().getSoLuong()%></b>
 						</h4>
 						<br>
+						
+						<a href="CartServlet?c=tru&idSanPham=<%=list.getValue().getSanPham().getIdSanPham()%>">
+						<img alt="" src="images/minus.png"></a>
+						
+						
 						<a href="CartServlet?c=themincart&idSanPham=<%=list.getValue().getSanPham().getIdSanPham()%>">
 						<img alt="" src="images/addplus.png"></a>
 					</div>

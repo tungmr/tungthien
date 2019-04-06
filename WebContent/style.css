@@ -609,3 +609,18 @@ html, body {
 	transition: all 0.5s;
 }
 
+
+#listimgdetail{
+	list-style-type: none;
+	display: flex;
+}
+
+#listimgdetail li{
+	margin: 10px;
+}
+
+#listimgdetail img{
+	width: 7em;
+	height: 10em;
+}
+

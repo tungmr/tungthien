@@ -33,6 +33,7 @@
 				<tr>
 					<th scope="col">STT</th>
 					<th scope="col">ID User</th>
+					<th scope="col">Họ tên</th>
 					<th scope="col">Username</th>
 					<th scope="col">Email</th>
 					<th scope="col">Số điện thoại</th>
@@ -51,6 +52,7 @@
 				<tr>
 					<th scope="row"><%=i+1 %></th>
 					<td><%=listUser.get(i).getIdUser() %></td>
+					<td><%=listUser.get(i).getName() %></td>
 					<td><%=listUser.get(i).getUserName() %></td>
 					<td><%=listUser.get(i).getEmailUser() %></td>
 					<td><%=listUser.get(i).getPhoneNumberUser()%></td>

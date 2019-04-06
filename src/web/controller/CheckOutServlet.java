@@ -63,7 +63,6 @@ public class CheckOutServlet extends HttpServlet {
 				hoaDon.setDiaChi(diaChi);
 				hoaDon.setTongTien(gioHang.TinhTienGioHang());
 				hoaDon.setDate(new Timestamp(new Date().getTime()));
-				
 				HoaDonDAO.themHoaDon(hoaDon);
 				for (Map.Entry<Long, VatPham> item : gioHang.getCacVatPham().entrySet()) {
 					ChiTietHoaDonDAO.themChiTietHoaDon(new ChiTietHoaDon(0,ID,item.getValue().getSanPham().getIdSanPham(),
@@ -73,7 +72,7 @@ public class CheckOutServlet extends HttpServlet {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
+			httpSession.removeAttribute("cart");
 			response.sendRedirect("checkout.jsp?e=0");
 			
 		}

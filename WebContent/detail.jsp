@@ -41,11 +41,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="zoom/css/normalize.css" />
-<link rel="stylesheet" href="zoom/css/foundation.css" />
-<link rel="stylesheet" href="zoom/css/demo.css" />
-<script src="zoom/js/vendor/modernizr.js"></script>
-<script src="zoom/js/vendor/jquery.js"></script>
+
+<link rel="stylesheet" href="css/lightbox.min.css" />
+<script type="text/javascript" src="js/lightbox-plus-jquery.min.js"></script>
+
 <!-- xzoom plugin here -->
 <script type="text/javascript" src="zoom/dist/xzoom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="zoom/css/xzoom.css"
@@ -92,187 +91,8 @@
 		}
 	%> 
 	
-	<nav
-		class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-		style="margin-bottom: 0;border: none;border-radius: none;">
-		<%
-			if (user != null) {
-				
-		%>
-		<div class="container">
-		<ul class="navbar-nav ml-auto">
-			<!-- Nav Item - User Information -->
-			<li class="nav-item dropdown no-arrow">
-			<a
-				class="nav-link dropdown-toggle" href="#" id="userDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <span
-					class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 18px;">Xin chào, <%=user.getUserName() %>
-						</span> <img class="img-profile rounded-circle"
-					src="images/user.png">
-			</a>
-				<div
-					class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="#"> <i
-						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông tin cá nhân
-					</a>
-
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="Logout"> <i
-						class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-						Đăng xuất
-					</a>
-				</div></li>
-
-		</ul>
-
-		<%
-			} else {
-		%>
-		<div class= "container">
-			<ul class="navbar-nav ml-auto" >
-			<li><a href="login.jsp" style="margin-right: 20px;color: #FCA311; text-decoration: none;">Đăng nhập <img alt="" src="images/login.png"></a> </li> 
-			<li><a href="register.jsp" style="color: #FCA311; text-decoration: none;">Đăng kí <img alt="" src="images/register.png" ></a></li>
-			</ul>
-		</div>
-		<%
-			}
-		%>
-		</div>
-	</nav>
-	<div class="">
-		<div class="header" id="topne">
-			<div class="logo">
-				<a href="index.jsp"><img src="images/name.png" width="150px"
-					height="50px"></a>
-			</div>
-			<div class="searchtt">
-				<div class="input-search">
-					<form action="search.jsp">
-						<div>
-							<input type="text" name="keyword"
-								placeholder="Nhập từ khóa tìm kiếm...">
-						</div>
-
-					</form>
-				</div>
-			</div>
-			<div class="cart"
-				style="display: flex; justify-content: flex-start; align-items: center;">
-				<a href="cart.jsp">XEM GIỎ HÀNG</a>
-				<ul class="icon1 sub-icon1">
-
-					<li><div class="cart">
-							<a href="#" class="cart-in"><img alt=""
-								src="images/shopping-cart.png" width="30px" height="30px"></a>
-							<span> <%=gioHang.DemVatPham()%></span>
-						</div>
-						<ul class="sub-icon1 list">
-							<h3>
-								Các vật phẩm (<%=gioHang.DemVatPham()%>)
-							</h3>
-							<div class="shopping_cart">
-
-								<%
-									for (Map.Entry<Long, VatPham> list : gioHang.getCacVatPham().entrySet()) {
-								%>
-
-								<div class="cart_box">
-									<div class="message">
-										<div class="alert-close"></div>
-										<div class="list_img">
-											<img
-												src="/LapTrinhWeb/images/<%=list.getValue().getSanPham().getAnhSanPham()%>"
-												class="img-responsive" alt="">
-										</div>
-										<div class="list_desc">
-											<h4>
-												<a
-													href="detail.jsp?idSanPham=<%=list.getValue().getSanPham().getIdSanPham()%>"><%=list.getValue().getSanPham().getTenSanPham()%></a>
-											</h4>
-											<%=list.getValue().getSoLuong()%>
-											<h4 style="font-size: 15px;"><%=formatter.format(list.getValue().getSanPham().getGiaSanPham())%>
-												VNĐ
-											</h4>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-								<%
-									}
-								%>
-							</div>
-							<div class="total">
-								<div class="total_left">Tổng tiền :</div>
-
-								<%
-									if (gioHang != null) {
-								%>
-								<div class="total_right" style="font-size: 20px;"><%=formatter.format(gioHang.TinhTienGioHang())%>
-									VNĐ
-								</div>
-
-								<%
-									} else {
-								%>
-								<div class="total_right">0</div>
-								<%
-									}
-								%>
-
-								<div class="clearfix"></div>
-							</div>
-							<div class="checkout">
-								<div class="check">
-									<a href="checkout.jsp" class="check">Đặt hàng</a>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="clearfix"></div>
-						</ul></li>
-				</ul>
-
-
-
-			</div>
-		</div>
-		<div class="menu" id="idmenu">
-			<ul class="ulmenu">
-				<li><a href="index.jsp">Trang chủ</a></li>
-				<li><a href="#">Giới thiệu</a></li>
-				<%
-					for (int i = 0; i < listDanhMuc.size(); i++) {
-				%>
-				<li><a
-					href="category.jsp?idDanhMuc=<%=listDanhMuc.get(i).getiD()%>"><%=listDanhMuc.get(i).getTenDanhMuc()%>
-						<img src="images/down.png" width="11px" height="11px"></a> <%
- 	
- %><ul class="sub-menu">
-						<%
-							for (int j = 0; j < listTheLoai.size(); j++) {
-									if (listTheLoai.get(j).getDanhMuc() == listDanhMuc.get(i).getiD()) {
-						%>
-						<li><a
-							href="product.jsp?idTheLoai=<%=listTheLoai.get(j).getiD()%>"><%=listTheLoai.get(j).getTenTheLoai()%></a></li>
-						<%
-							}
-								}
-						%>
-					</ul> <%
- 	
- %></li>
-				<%
-					}
-				%>
-
-				<li><a href="contact.jsp">Kết nối</a></li>
-				<li><a href="#vechungtoi">Về chúng tôi</a></li>
-			</ul>
-		</div>
-	</div>
-
-
+	
+	<jsp:include page="header.jsp"></jsp:include>
 	<%
 		int idSanPham = 0;
 		if (request.getParameter("idSanPham") != null) {
@@ -287,34 +107,29 @@
 		<div style="margin: 20px 0px;">
 			<h4>Xem chi tiết sản phẩm</h4>
 		</div>
-		<div class="contai-detail">
-			<div class="contai-zoom">
-				<!-- default start -->
-				<section id="default" class="padding-top0">
-					<div class="row">
-
-						<div class="large-12 column">
-							<div class="xzoom-container">
-								<img class="xzoom" id="xzoom-default"
-									src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"
-									xoriginal="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" width="100%" height="100%" />
-								<div class="xzoom-thumbs">
-									<a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"
-										xpreview="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
-									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
-									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
-									</a> <a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"> <img
-										class="xzoom-gallery" width="80" src="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+		<div style="display: grid; grid-template-columns: 70% 30%;">			
+			<div class= "gallery">
+			<div style="margin-bottom: 20px;">
+			<a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" data-lightbox="mygallery" >
+			<img src ="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"></a>
 			</div>
+			
+			<ul id="listimgdetail">
+				<li><a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" data-lightbox="mygallery" >
+			<img src ="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"></a></li>
+			<li><a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" data-lightbox="mygallery" >
+			<img src ="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"></a></li>
+			<li><a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" data-lightbox="mygallery" >
+			<img src ="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"></a></li>
+			<li><a href="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>" data-lightbox="mygallery" >
+			<img src ="/LapTrinhWeb/images/<%=sp.getAnhSanPham()%>"></a></li>
+			</ul>
+			
+			
+			</div>
+			
+			
+			
 			<div class="detail-content">
 				<div>
 					<h3><%=sp.getTenSanPham()%></h3>
@@ -324,6 +139,11 @@
 						<h4><%=formatter.format(sp.getGiaSanPham())%>
 							VNĐ
 						</h4>
+					</div>
+					<div>
+						<p>
+							Mô tả:
+							<%=sp.getMoTaSanPham()%></p>
 					</div>
 					<div class="addcart">
 					<%
@@ -343,43 +163,16 @@
 					
 					</div>
 
-					<div>
-						<p>
-							Mô tả:
-							<%=sp.getMoTaSanPham()%></p>
-					</div>
+					
 				</div>
-				<div class="available">
-					<h6>Tùy chọn :</h6>
-					<ul>
-						<li>Màu sắc: <select>
-								<option>Trắng</option>
-								<option>Đen</option>
-								<option>Vàng</option>
-								<option>Đỏ</option>
-						</select></li>
-						<li>Size:<select>
-								<option>XL</option>
-								<option>L</option>
-								<option>M</option>
-								<option>S</option>
-						</select></li>
-						<li>Số lượng:<select>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-						</select></li>
-					</ul>
-				</div>
+				
 			</div>
 		</div>
 
 
 	</div>
 
-	<div class="container">
+	<div class="container" style="margin-top: 100px;">
 		<div class="fb-comments"
 			data-href="http://localhost:8080/LapTrinhWeb/detail.jsp?idSanPham=<%=sp.getIdSanPham()%>"
 			data-width="55em" data-numposts="5"></div>
@@ -387,67 +180,7 @@
 
 
 
-	<div class="bottom">
-		<div class="container">
-			<div class="about">
-				<div class="info">
-					<h2 style="text-align: center;">TTShop.vn</h2>
-					<ul>
-						<li style="font-size: 20px;">Chất lượng
-							<ul>
-								<li>TTShop cam kết chất lượng cho tất cả sản phẩm bán tại
-									cửa hàng TTShop bằng chính sách bảo hành 365 ngày và chăm sóc
-									trọn đời sau khi hết bảo hành.</li>
-							</ul>
-						</li>
-						<li style="font-size: 20px;">Phục vụ
-							<ul>
-								<li>TTShop cam kết chất lượng phục vụ tốt nhất, chuyên
-									nghiệp nhất cho mọi khách hàng bằng chính sách hoàn tiền và
-									tặng quà nếu nhân viên phục vụ quí khách không chu đáo.</li>
-							</ul>
-						</li>
-						<li style="font-size: 20px;">Hỗ trợ
-							<ul>
-								<li>Nếu bạn gặp rắc rối về sản phẩm hay chất lượng dịch vụ
-									của TTShop, hãy gọi ngay đến số 098686868.</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-
-				<div class="help">
-					<h2 style="text-align: center;">Trợ giúp và tư vấn</h2>
-					<ul>
-						<li><img src="images/right-arrow.png" width="11px"
-							height="11px"> <a href="#">Liện hệ</a></li>
-						<li><img src="images/right-arrow.png" width="11px"
-							height="11px"> <a href="#">Cách chọn size quần áo</a></li>
-						<li><img src="images/right-arrow.png" width="11px"
-							height="11px"> <a href="#">Câu hỏi thường gặp</a></li>
-						<li><img src="images/right-arrow.png" width="11px"
-							height="11px"> <a href="#">Chính sách đổi hàng</a></li>
-					</ul>
-				</div>
-
-				<div class="contact">
-					<h2 style="text-align: center;">Kết nối</h2>
-					<ul>
-						<li><a href="#" title="Đi đến trang facebook chúng tôi"><img
-								src="images/facebook.png"></a></li>
-						<li><a href="#" title="Đi đến trang instagram chúng tôi"><img
-								src="images/instagram.png"></a></li>
-						<li><a href="#" title="Đi đến trang youtube chúng tôi"><img
-								src="images/youtube.png"></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer" style="margin-top: 10px">
-			<p>&copy; Copyright 2019 TungMR, ThienLe</p>
-		</div>
-	</div>
-
+	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- Cuộn trơn -->
 	<script type="text/javascript">
 		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -463,7 +196,5 @@
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	<script src="js/sb-admin-2.min.js"></script>
-	<script src="zoom/js/foundation.min.js"></script>
-	<script src="zoom/js/setup.js"></script>
 </body>
 </html>

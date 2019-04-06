@@ -37,13 +37,11 @@ public class GioHang {
 
 	// Trừ số lượng vật phẩm trong giỏ hàng
 	public void TruSoLuong(Long key, VatPham vatPham) {
-		boolean b = cacVatPham.containsKey(key);
-		if (b) {
-			int soLuongCu = vatPham.getSoLuong();
-			if (soLuongCu <= 1) {
-				cacVatPham.remove(key);
+		int soLuongCu = vatPham.getSoLuong();
+		if (soLuongCu <= 1) {
+			cacVatPham.remove(key);
 			}
-		} else {
+		else {
 			vatPham.setSoLuong(vatPham.getSoLuong() - 1);
 			cacVatPham.put(key, vatPham);
 		}
