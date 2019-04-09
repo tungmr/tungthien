@@ -35,7 +35,6 @@
 			<input type="password" name="password" placeholder="Nhập vào mật khẩu của bạn">
 			<%
 			if (e.equals("1")){
-				System.out.println(e);
 			%>
 				<p id="noti" style="color: red; margin-bottom: 10px; ">Thông tin đăng nhập không đúng!</p>
 			<%

@@ -119,7 +119,7 @@
 				placeholder="Nhập vào số điện thoại của bạn" maxlength="30">
 			<%
 				if (e.equals("1")) {
-					System.out.println(e);
+					
 			%>
 			<p id="noti" style="color: red; margin-bottom: 10px;">Kiểm tra
 				lại thông tin!</p>

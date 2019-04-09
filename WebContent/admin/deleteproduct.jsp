@@ -9,17 +9,7 @@
 <title>Quản lý sản phẩm</title>
 </head>
 <body>
-	<%
-	User user = null;
-	if (session.getAttribute("user") != null) {
-		user = (User) session.getAttribute("user");
-	}
-	if (user != null && user.getRoleUser() == 0) {
-		response.sendRedirect("/LapTrinhWeb/index.jsp");
-	} else if (user == null) {
-		response.sendRedirect("/LapTrinhWeb/login.jsp");
-	}
-%>
+	
 
 	<jsp:include page="header.jsp"></jsp:include>
 

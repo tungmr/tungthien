@@ -10,7 +10,7 @@
  <meta charset="UTF-8">
 <title>Đặt hàng</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="./style.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 
 </head>
 <body>

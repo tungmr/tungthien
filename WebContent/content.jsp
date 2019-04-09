@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TTSHOP - Thời trang nam cao cấp</title>
-<link rel="stylesheet" type="text/css" href="./style.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -41,7 +41,7 @@
 		%>
 
 		<div class="products">
-			<a href="#"><h2>
+			<a href="category.jsp?idDanhMuc=1&page=1"><h2>
 					Sản phẩm mới <img src="images/right.png" width="11px" height="11px">
 				</h2></a>
 			<%
@@ -83,7 +83,7 @@
 		</div>
 
 		<div class="products">
-			<a href="#"><h2>
+			<a href="category.jsp?idDanhMuc=1&page=1"><h2>
 					Những sản phẩm bán chạy <img src="images/right.png" width="11px"
 						height="11px">
 				</h2></a>

@@ -27,7 +27,6 @@ public class CheckPasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
-		System.out.println(password+" " + repassword);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		if (password.equals(repassword)) {

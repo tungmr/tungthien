@@ -12,18 +12,7 @@
 <title>Quản lý loại sản phẩm</title>
 </head>
 <body>
-	<%
-	User user = null;
-	if (session.getAttribute("user") != null) {
-		user = (User) session.getAttribute("user");
-	}
-	if (user != null && user.getRoleUser() == 0) {
-		response.sendRedirect("/LapTrinhWeb/index.jsp");
-	} else if (user == null) {
-		response.sendRedirect("/LapTrinhWeb/login.jsp");
-	}
-%>
-
+	
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">

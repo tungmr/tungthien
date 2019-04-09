@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TTSHOP - Thời trang nam cao cấp</title>
-<link rel="stylesheet" type="text/css" href="./style.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -29,8 +29,8 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	
-		<div>
-			<h3>Trang không tìm thấy</h3>
+		<div class="container">
+			<h2>Trang không tìm thấy!</h2>
 			<a href="index.jsp">Quay về trang chủ!</a>
 		</div>
 	

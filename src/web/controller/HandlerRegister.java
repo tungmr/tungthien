@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import web.dao.UserDAO;
 import web.model.User;
+import web.tools.MD5;
 
 /**
  * Servlet implementation class HandlerUser

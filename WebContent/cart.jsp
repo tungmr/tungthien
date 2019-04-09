@@ -8,8 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>TTSHOP - Thời trang nam cao cấp</title>
-<link rel="stylesheet" type="text/css" href="./style.css">
+<title>Giỏ hàng</title>
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <!-- Latest compiled and minified CSS -->
