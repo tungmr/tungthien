@@ -59,7 +59,8 @@
 					%>
 					<p style="font-size: 18px;color: blue;font-weight: bold;text-align: left;">Đặt hàng thành công, quay lại <a href="index.jsp">trang chủ</a>!</p>
 					<%
-					
+					session.removeAttribute("cart");
+
 				}
 				%>
 				

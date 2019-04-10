@@ -48,7 +48,7 @@
 			<div class="form-group">
 				<label for="exampleFormControlInput1">Giá sản phẩm</label> <input
 					type="number" class="form-control" id="exampleFormControlInput1"
-					value="<%=sanPham.getGiaSanPham() %>" name="giaSanPham">
+					value="<%=sanPham.getGiaSanPham()%>" name="giaSanPham">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlSelect1">Loại</label> <select

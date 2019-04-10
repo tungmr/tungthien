@@ -25,8 +25,8 @@ public class JDBCConnection {
 		return conn;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		JDBCConnection c = new JDBCConnection();
 		Connection conn = c.myConnect();
-	}
+	}*/
 }

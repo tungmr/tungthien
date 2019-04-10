@@ -16,9 +16,10 @@ public class SanPhamDAO {
 
 		Connection connection = JDBCConnection.myConnect();
 
-		String sql = "SELECT * FROM sanpham WHERE theloai='" + idTheLoai + "'";
+		String sql = "SELECT * FROM sanpham WHERE theloai=?";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, idTheLoai);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				SanPham sanPham = new SanPham();
@@ -45,9 +46,10 @@ public class SanPhamDAO {
 
 		Connection connection = JDBCConnection.myConnect();
 
-		String sql = "SELECT * FROM sanpham WHERE danhmuc='" + idDanhMuc + "'";
+		String sql = "SELECT * FROM sanpham WHERE danhmuc=?";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, idDanhMuc);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				SanPham sanPham = new SanPham();
@@ -71,10 +73,11 @@ public class SanPhamDAO {
 	// get 1 sản phẩm theo id của sản phẩm
 	public static SanPham getSanPhamByIdSanPham(int idSanPham) {
 		SanPham sanPham = new SanPham();
-		String sql = "SELECT * FROM sanpham WHERE id_sanpham='" + idSanPham + "'";
+		String sql = "SELECT * FROM sanpham WHERE id_sanpham=?";
 		Connection connection = JDBCConnection.myConnect();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, idSanPham);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				sanPham.setIdSanPham(resultSet.getInt("id_sanpham"));
@@ -99,11 +102,12 @@ public class SanPhamDAO {
 	public static ArrayList<SanPham> getListSanPhamByDanhMuc(int idDanhMuc, int result, int maxResult){
 		ArrayList<SanPham> listSP = new ArrayList<>();
 		Connection connection = JDBCConnection.myConnect();
-		String sql = "SELECT * FROM sanpham WHERE danhmuc='"+idDanhMuc+"' limit ?,?";
+		String sql = "SELECT * FROM sanpham WHERE danhmuc=? limit ?,?";
 		try {
 			PreparedStatement preparedStatement = connection.prepareCall(sql);
-			preparedStatement.setInt(1, result);
-			preparedStatement.setInt(2, maxResult);
+			preparedStatement.setInt(1, idDanhMuc);
+			preparedStatement.setInt(2, result);
+			preparedStatement.setInt(3, maxResult);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				SanPham sanPham = new SanPham();
@@ -130,10 +134,11 @@ public class SanPhamDAO {
 	// đếm tổng sản phẩm theo danh mục
 	public static int demTongSanPhamTheoDanhMuc(int danhMuc) {
 		int count = 0;
-		String sql = "SELECT count(id_sanpham) FROM sanpham WHERE danhmuc='"+danhMuc+"'";
+		String sql = "SELECT count(id_sanpham) FROM sanpham WHERE danhmuc=?";
 		Connection connection = JDBCConnection.myConnect();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, danhMuc);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				count = resultSet.getInt(1);
@@ -148,11 +153,12 @@ public class SanPhamDAO {
 		public static ArrayList<SanPham> getListSanPhamByTheLoai(int idTheLoai, int result, int maxResult){
 			ArrayList<SanPham> listSP = new ArrayList<>();
 			Connection connection = JDBCConnection.myConnect();
-			String sql = "SELECT * FROM sanpham WHERE theloai='"+idTheLoai+"' limit ?,?";
+			String sql = "SELECT * FROM sanpham WHERE theloai=? limit ?,?";
 			try {
 				PreparedStatement preparedStatement = connection.prepareCall(sql);
-				preparedStatement.setInt(1, result);
-				preparedStatement.setInt(2, maxResult);
+				preparedStatement.setInt(1, idTheLoai);
+				preparedStatement.setInt(2, result);
+				preparedStatement.setInt(3, maxResult);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
 					SanPham sanPham = new SanPham();
@@ -179,10 +185,11 @@ public class SanPhamDAO {
 		// đếm tổng sản phẩm theo thể loại
 		public static int demTongSanPhamTheoTheLoai(int idTheLoai) {
 			int count = 0;
-			String sql = "SELECT count(id_sanpham) FROM sanpham WHERE theloai='"+idTheLoai+"'";
+			String sql = "SELECT count(id_sanpham) FROM sanpham WHERE theloai=?";
 			Connection connection = JDBCConnection.myConnect();
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idTheLoai);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					count = resultSet.getInt(1);
@@ -195,10 +202,13 @@ public class SanPhamDAO {
 		
 		public static ArrayList<SanPham> locSanPhamThuocDanhMucTheoKhoangGia(int idDanhMuc, double min, double max){
 			ArrayList<SanPham> listSP = new ArrayList<>();
-			String sql = "SELECT * FROM sanpham WHERE danhmuc='"+idDanhMuc+"' and giasanpham >="+min+" and giasanpham <="+max;
+			String sql = "SELECT * FROM sanpham WHERE danhmuc=? and giasanpham >=? and giasanpham <=?";
 			Connection connection = JDBCConnection.myConnect();
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idDanhMuc);
+				preparedStatement.setDouble(2, min);
+				preparedStatement.setDouble(3, max);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					SanPham sanPham = new SanPham();
@@ -222,10 +232,12 @@ public class SanPhamDAO {
 		
 		public static ArrayList<SanPham> locSanPhamThuocDanhMucTheoKG(int idDanhMuc, double min){
 			ArrayList<SanPham> listSP = new ArrayList<>();
-			String sql = "SELECT * FROM sanpham WHERE danhmuc='"+idDanhMuc+"' and giasanpham >="+min;
+			String sql = "SELECT * FROM sanpham WHERE danhmuc=? and giasanpham >=?";
 			Connection connection = JDBCConnection.myConnect();
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idDanhMuc);
+				preparedStatement.setDouble(2, min);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					SanPham sanPham = new SanPham();
@@ -249,10 +261,13 @@ public class SanPhamDAO {
 		
 		public static ArrayList<SanPham> locSanPhamThuocTheLoaiTheoKhoangGia(int idTheLoai, double min, double max){
 			ArrayList<SanPham> listSP = new ArrayList<>();
-			String sql = "SELECT * FROM sanpham WHERE theloai='"+idTheLoai+"' and giasanpham >="+min+" and giasanpham <="+max;
+			String sql = "SELECT * FROM sanpham WHERE theloai=? and giasanpham >=? and giasanpham <=?";
 			Connection connection = JDBCConnection.myConnect();
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idTheLoai);
+				preparedStatement.setDouble(2, min);
+				preparedStatement.setDouble(3, max);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					SanPham sanPham = new SanPham();
@@ -276,10 +291,12 @@ public class SanPhamDAO {
 		
 		public static ArrayList<SanPham> locSanPhamThuocTheLoaiTheoKG(int idTheLoai, double min){
 			ArrayList<SanPham> listSP = new ArrayList<>();
-			String sql = "SELECT * FROM sanpham WHERE theloai='"+idTheLoai+"' and giasanpham >="+min;
+			String sql = "SELECT * FROM sanpham WHERE theloai=? and giasanpham >=?";
 			Connection connection = JDBCConnection.myConnect();
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, idTheLoai);
+				preparedStatement.setDouble(2, min);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					SanPham sanPham = new SanPham();

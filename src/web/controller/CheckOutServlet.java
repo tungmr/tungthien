@@ -72,7 +72,6 @@ public class CheckOutServlet extends HttpServlet {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			httpSession.removeAttribute("cart");
 			response.sendRedirect("checkout.jsp?e=0");
 			
 		}

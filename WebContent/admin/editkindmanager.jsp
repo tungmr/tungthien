@@ -25,8 +25,7 @@
 			if (request.getParameter("idTheLoai") != null) {
 				idTheLoai = request.getParameter("idTheLoai");
 			}
-			DanhMucDAO danhMucDAO = new DanhMucDAO();
-			List<DanhMuc> listDanhMuc = danhMucDAO.getDanhMuc();
+			List<DanhMuc> listDanhMuc = DanhMucDAO.getDanhMuc();
 			TheLoai theLoai = TheLoaiDAO.getMotTheLoai(Integer.parseInt(idTheLoai));
 		%>
 

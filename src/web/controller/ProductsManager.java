@@ -126,6 +126,7 @@ public class ProductsManager extends HttpServlet {
 				}
 
 			} catch (Exception ex) {
+				
 			}
 			break;
 		case "xoa":
